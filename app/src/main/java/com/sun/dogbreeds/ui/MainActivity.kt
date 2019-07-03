@@ -1,7 +1,8 @@
-package com.sun.dogbreeds
+package com.sun.dogbreeds.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.sun.dogbreeds.R
 
 class MainActivity : AppCompatActivity() {
 
