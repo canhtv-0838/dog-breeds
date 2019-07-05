@@ -16,8 +16,8 @@ class MainApplication : Application() {
             modules(
                 listOf(
                     appModule,
-                    viewModelModule,
-                    sourceModule
+                    sourceModule,
+                    viewModelModule
                 )
             )
         }
