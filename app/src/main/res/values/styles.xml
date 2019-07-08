@@ -19,6 +19,10 @@
         <item name="android:state_selected">true</item>
     </style>
 
+    <style name="TextBold" parent="TextDefaultStyle">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="TextCapsBold" parent="TextSingleLine">
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
@@ -72,4 +76,8 @@
         <item name="android:layout_height">@dimen/dp_40</item>
         <item name="android:inputType">textPersonName</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

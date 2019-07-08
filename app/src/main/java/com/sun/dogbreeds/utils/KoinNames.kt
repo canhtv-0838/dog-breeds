@@ -10,8 +10,21 @@ object KoinNames{
 
     const val APP_DATABASE = "name_app_database"
 
-    const val BREEDS_LOCAL_DATA_SOURCE = "name_breeds_local_data_source"
-    const val BREEDS_REMOTE_DATA_SOURCE = "name_Breeds_remote_data_source"
-    const val BREEDS_LOCAL_REPOSITORY = "name_breeds_local_repository"
-    const val BREEDS_REMOTE_REPOSITORY = "name_Breeds_remote_repository"
+    const val BREED_LOCAL_DATA_SOURCE = "name_breed_local_data_source"
+    const val BREED_REMOTE_DATA_SOURCE = "name_breed_remote_data_source"
+    const val BREED_LOCAL_REPOSITORY = "name_breed_local_repository"
+    const val BREED_REMOTE_REPOSITORY = "name_breed_remote_repository"
+    const val BREED_INFO_REPOSITORY = "name_breed_info_repository"
+    const val BREED_INFO_REMOTE_DATA_SOURCE = "name_breed_info_remote_data_source"
+
+    const val BREED_ADAPTER = "name_breed_adapter"
+    const val BREED_IMAGE_ADAPTER = "name_breed_image_adapter"
+
+    const val EMPTY_BREED = "name_empty_breed"
+    const val EMPTY_THE_DOG_API_RESPONSE = "name_empty_the_dog_api_response"
+    const val EMPTY_DOG_CEO_API_RESPONSE = "name_empty_dog_ceo_api_response"
+    const val EMPTY_WEIGHT = "name_empty_weight"
+    const val EMPTY_HEIGHT = "name_empty_height"
+
+    const val PROPERTY_CHANGE_REGISTRY = "name_property_change_registry"
 }

@@ -11,7 +11,7 @@ private const val ENDPOINT_IMAGES = "api/breed/{$PATH_BREED_NAME}/images"
 interface DogCeoApi {
 
     @GET(ENDPOINT_IMAGES)
-    fun getImagesAsync(@Path(PATH_BREED_NAME) breedName: String): Deferred<DogCeoResponse<List<String>>>
+    fun getImagesAsync(@Path(PATH_BREED_NAME) breedName: String): Deferred<DogCeoResponse>
 
     companion object {
         const val BASE_URL = "https://dog.ceo"
