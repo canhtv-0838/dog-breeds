@@ -4,7 +4,9 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.sun.dogbreeds.data.api.ApiFactory
 import com.sun.dogbreeds.data.api.DogCeoApi
 import com.sun.dogbreeds.data.api.TheDogApi
+import com.sun.dogbreeds.data.db.AppDatabase
 import com.sun.dogbreeds.utils.KoinNames
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.converter.gson.GsonConverterFactory
@@ -43,5 +45,9 @@ val appModule = module{
 
     single(named(KoinNames.THE_DOG_API_BASE_URL)) {
         TheDogApi.BASE_URL
+    }
+
+    single(named(KoinNames.APP_DATABASE)) {
+        AppDatabase.getInstance(androidContext())
     }
 }
