@@ -8,8 +8,10 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 
-abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
+abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment(), LifecycleOwner {
 
     protected lateinit var viewDataBinding: VB
     protected abstract val layoutResource: Int
@@ -25,20 +27,38 @@ abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setBindingVariables()
         initComponents()
+        setBindingVariables()
+        initData()
         observeData()
-    }
-
-    open fun setBindingVariables() {
-        viewModel.create()
     }
 
     protected abstract fun initComponents()
 
-    protected abstract fun observeData()
+    protected open fun initData() {
+        viewModel.create()
+    }
 
-    protected fun toast(message: String) = context?.let {
+    protected open fun observeData() {
+        viewModel.messageNotification.observe(this, Observer {
+            toast(it)
+        })
+    }
+
+    open fun setBindingVariables() {
+    }
+
+    protected fun replaceFragment(id: Int, fragment: Fragment, addToBackStack: Boolean) =
+        activity?.supportFragmentManager?.beginTransaction()?.replace(id, fragment)?.apply {
+            if (addToBackStack) addToBackStack(null)
+        }?.commit()
+
+    protected fun addFragment(id: Int, fragment: Fragment, addToBackStack: Boolean) =
+        activity?.supportFragmentManager?.beginTransaction()?.add(id, fragment)?.apply {
+            if (addToBackStack) addToBackStack(null)
+        }?.commit()
+
+    private fun toast(message: String) = context?.let {
         Toast.makeText(it, message, Toast.LENGTH_SHORT).show()
     }
 }

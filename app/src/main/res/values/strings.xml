@@ -3,5 +3,13 @@
     <string name="title_dog_breeds">Dog Breeds</string>
     <string name="title_search">Search</string>
     <string name="title_favorite">Favorite</string>
-    <string name="hint_search_box">search breed\'s name …</string>
+    <string name="hint_search_box">search by breed\'s name or origin …</string>
+    <string name="title_detail">Detail</string>
+    <string name="title_name">Name</string>
+    <string name="title_weight">Weight</string>
+    <string name="title_height">Height</string>
+    <string name="title_life_span">Life span</string>
+    <string name="title_breed_for">Breed for</string>
+    <string name="title_breed_group">Breed group</string>
+    <string name="title_temperament">Temperament</string>
 </resources>

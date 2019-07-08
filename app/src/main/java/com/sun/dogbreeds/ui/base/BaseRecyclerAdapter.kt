@@ -1,10 +1,12 @@
 package com.sun.dogbreeds.ui.base
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.sun.dogbreeds.utils.Constants
 
 abstract class BaseRecyclerAdapter<T, VB : ViewDataBinding, VH : BaseRecyclerAdapter.BaseViewHolder<T, VB>>
     : RecyclerView.Adapter<VH>() {
@@ -38,13 +40,29 @@ abstract class BaseRecyclerAdapter<T, VB : ViewDataBinding, VH : BaseRecyclerAda
 
     protected fun getItemData(position: Int): T? = if (position in 0 until itemCount) items[position] else null
 
-    open class BaseViewHolder<T, VB : ViewDataBinding>(protected val binding: VB) :
-        RecyclerView.ViewHolder(binding.root) {
+    open class BaseViewHolder<T, VB : ViewDataBinding>(
+        protected val binding: VB
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        protected var itemData: T? = null
+        protected var itemPosition: Int = Constants.UNAVAILABLE_VALUE
+
+        init {
+            itemView.setOnClickListener {
+                itemData?.let { onItemClickListener(it) }
+            }
+        }
 
         open fun onBindData(itemData: T) {
+            this.itemData = itemData
         }
 
         open fun onBindData(itemPosition: Int, itemData: T) {
+            this.itemPosition = itemPosition
+            this.itemData = itemData
+        }
+
+        open fun onItemClickListener(itemData: T) {
         }
     }
 }
