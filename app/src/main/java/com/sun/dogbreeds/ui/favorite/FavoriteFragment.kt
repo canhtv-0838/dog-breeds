@@ -14,6 +14,9 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding, FavoriteViewModel
     override fun initComponents() {
     }
 
+    override fun initData() {
+    }
+
     override fun observeData() {
     }
 }

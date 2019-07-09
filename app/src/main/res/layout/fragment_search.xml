@@ -98,6 +98,7 @@
                     android:id="@+id/inputSearch"
                     style="@style/SearchBox"
                     android:layout_width="0dp"
+                    android:text="@={viewModel.searchKey}"
                     android:hint="@string/hint_search_box"
                     android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="@+id/imageCancel"
