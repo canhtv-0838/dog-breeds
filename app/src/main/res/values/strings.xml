@@ -12,4 +12,5 @@
     <string name="title_breed_for">Breed for</string>
     <string name="title_breed_group">Breed group</string>
     <string name="title_temperament">Temperament</string>
+    <string name="notification_empty">No item in your favorite</string>
 </resources>

@@ -16,13 +16,17 @@ object KoinNames{
     const val BREED_REMOTE_REPOSITORY = "name_breed_remote_repository"
     const val BREED_INFO_REPOSITORY = "name_breed_info_repository"
     const val BREED_INFO_REMOTE_DATA_SOURCE = "name_breed_info_remote_data_source"
+    const val FAVORITE_DATA_SOURCE = "name_favorite_data_source"
+    const val FAVORITE_REPOSITORY = "name_favorite_repository"
 
     const val BREED_ADAPTER = "name_breed_adapter"
     const val BREED_IMAGE_ADAPTER = "name_breed_image_adapter"
+    const val FAVORITE_ADAPTER = "name_favorite_adapter"
 
     const val EMPTY_BREED = "name_empty_breed"
     const val EMPTY_THE_DOG_API_RESPONSE = "name_empty_the_dog_api_response"
     const val EMPTY_DOG_CEO_API_RESPONSE = "name_empty_dog_ceo_api_response"
+    const val EMPTY_BREED_DETAIL_INFO = "name_empty_breed_detail_info"
     const val EMPTY_WEIGHT = "name_empty_weight"
     const val EMPTY_HEIGHT = "name_empty_height"
 

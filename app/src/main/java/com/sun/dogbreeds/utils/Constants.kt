@@ -11,4 +11,6 @@ object Constants {
     const val NO_INFORMATION = "No Information"
     const val UNAVAILABLE_VALUE = -1
     const val TITLE_LOADING = " loading... "
+
+    const val LIMIT_IMAGES = 10
 }
