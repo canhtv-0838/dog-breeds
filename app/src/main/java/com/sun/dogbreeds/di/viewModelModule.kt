@@ -14,5 +14,5 @@ val viewModelModule = module {
 
     viewModel { SearchViewModel(repository = get(named(KoinNames.BREED_LOCAL_REPOSITORY))) }
 
-    viewModel { FavoriteViewModel() }
+    viewModel { FavoriteViewModel(repository = get(named(KoinNames.FAVORITE_REPOSITORY))) }
 }
