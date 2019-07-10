@@ -9,10 +9,10 @@ import kotlinx.coroutines.Dispatchers
 
 class BreedLocalDataSource(private val appDatabase: AppDatabase) : BreedDataSource.Local {
 
-    override suspend fun getBreeds(): CoroutineResult<List<Breed>> = with(Dispatchers.IO) {
+    override suspend fun getBreeds(): CoroutineResult<List<Breed>> {
 
         val resultData = appDatabase.breedDao().getBreeds()
-        resultData?.let {
+        return resultData?.let {
             CoroutineResult.Success(it)
         } ?: CoroutineResult.Error(DataNotAvailableException())
     }
