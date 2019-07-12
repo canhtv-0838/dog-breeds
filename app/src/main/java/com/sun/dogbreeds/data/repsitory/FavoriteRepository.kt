@@ -13,4 +13,7 @@ class FavoriteRepository(private val dataSource: FavoriteDataSource) : FavoriteD
         dataSource.removeFavorite(breedInfo)
 
     override suspend fun getFavorites(): CoroutineResult<List<BreedInfo>> = dataSource.getFavorites()
+
+    override suspend fun isFavorite(name: String): CoroutineResult<Boolean> =
+        dataSource.isFavorite(name)
 }

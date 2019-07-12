@@ -3,10 +3,7 @@ package com.sun.dogbreeds.data.source.local
 import com.sun.dogbreeds.coroutine.CoroutineResult
 import com.sun.dogbreeds.data.db.AppDatabase
 import com.sun.dogbreeds.data.db.entity.BreedInfo
-import com.sun.dogbreeds.data.source.DataDeleteFailed
-import com.sun.dogbreeds.data.source.DataInsertFailed
-import com.sun.dogbreeds.data.source.DataNotAvailableException
-import com.sun.dogbreeds.data.source.FavoriteDataSource
+import com.sun.dogbreeds.data.source.*
 
 class FavoriteLocalDataSource(private val appDatabase: AppDatabase) : FavoriteDataSource {
 
@@ -30,4 +27,13 @@ class FavoriteLocalDataSource(private val appDatabase: AppDatabase) : FavoriteDa
             CoroutineResult.Success(it)
         } ?: CoroutineResult.Error(DataNotAvailableException())
     }
+
+    override suspend fun isFavorite(name: String): CoroutineResult<Boolean> =
+        try {
+            val isNotExist = appDatabase.favoriteDao().getFavoritesByName(name).isNotEmpty()
+            CoroutineResult.Success(isNotExist)
+        } catch (e: Exception) {
+            CoroutineResult.Error(DataSourceException(e.message))
+        }
+
 }

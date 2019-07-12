@@ -6,3 +6,12 @@ sealed class CoroutineResult<out T : Any> {
 
     class Error(val throwable: Throwable) : CoroutineResult<Nothing>()
 }
+
+fun <T : Any, DATA> CoroutineResult<T>.getData(
+    onSuccess: (resultData: T) -> DATA,
+    onFailed: (throwable: Throwable) -> DATA
+): DATA = when (this) {
+
+    is CoroutineResult.Success -> onSuccess(this.data)
+    is CoroutineResult.Error -> onFailed(this.throwable)
+}
