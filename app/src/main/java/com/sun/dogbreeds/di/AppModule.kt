@@ -11,7 +11,7 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.converter.gson.GsonConverterFactory
 
-val appModule = module{
+val appModule = module {
 
     single(named(KoinNames.DOG_CEO_API)) {
         ApiFactory.buildRestApi(
@@ -49,5 +49,9 @@ val appModule = module{
 
     single(named(KoinNames.APP_DATABASE)) {
         AppDatabase.getInstance(androidContext())
+    }
+
+    single(named(KoinNames.RESOURCE_STRING)) { (resourceId: Int) ->
+        androidContext().getString(resourceId)
     }
 }

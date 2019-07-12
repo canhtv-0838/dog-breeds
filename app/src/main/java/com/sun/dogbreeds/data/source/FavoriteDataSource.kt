@@ -10,4 +10,6 @@ interface FavoriteDataSource {
     suspend fun removeFavorite(breedInfo: BreedInfo): CoroutineResult<BreedInfo>
 
     suspend fun getFavorites(): CoroutineResult<List<BreedInfo>>
+
+    suspend fun isFavorite(name: String): CoroutineResult<Boolean>
 }

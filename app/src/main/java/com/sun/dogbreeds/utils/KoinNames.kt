@@ -1,6 +1,8 @@
 package com.sun.dogbreeds.utils
 
-object KoinNames{
+object KoinNames {
+
+    const val RESOURCE_STRING = "name_resource_string"
     const val DOG_CEO_API = "name_dog_ceo_api"
     const val THE_DOG_API = "name_the_dog_api"
     const val DOG_CEO_BASE_URL = "name_dog_ceo_base_url"
@@ -23,10 +25,13 @@ object KoinNames{
     const val BREED_IMAGE_ADAPTER = "name_breed_image_adapter"
     const val FAVORITE_ADAPTER = "name_favorite_adapter"
 
+    const val BREED_INFO_FROM_BREED = "name_breed_info_from_breed"
+
     const val EMPTY_BREED = "name_empty_breed"
     const val EMPTY_THE_DOG_API_RESPONSE = "name_empty_the_dog_api_response"
     const val EMPTY_DOG_CEO_API_RESPONSE = "name_empty_dog_ceo_api_response"
     const val EMPTY_BREED_DETAIL_INFO = "name_empty_breed_detail_info"
+    const val EMPTY_BREED_INFO = "name_empty_breed_info"
     const val EMPTY_WEIGHT = "name_empty_weight"
     const val EMPTY_HEIGHT = "name_empty_height"
 
