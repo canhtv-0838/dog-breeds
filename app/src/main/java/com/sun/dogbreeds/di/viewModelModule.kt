@@ -1,5 +1,6 @@
 package com.sun.dogbreeds.di
 
+import com.sun.dogbreeds.ui.detail.DetailViewModel
 import com.sun.dogbreeds.ui.favorite.FavoriteViewModel
 import com.sun.dogbreeds.ui.main.MainViewModel
 import com.sun.dogbreeds.ui.search.SearchViewModel
@@ -15,4 +16,12 @@ val viewModelModule = module {
     viewModel { SearchViewModel(repository = get(named(KoinNames.BREED_LOCAL_REPOSITORY))) }
 
     viewModel { FavoriteViewModel(repository = get(named(KoinNames.FAVORITE_REPOSITORY))) }
+
+    viewModel {
+        DetailViewModel(
+            infoRepository = get(named(KoinNames.BREED_INFO_REPOSITORY)),
+            favoriteRepository = get(named(KoinNames.FAVORITE_REPOSITORY)),
+            imageRepository = get(named(KoinNames.BREED_REMOTE_REPOSITORY))
+        )
+    }
 }

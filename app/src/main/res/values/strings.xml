@@ -13,4 +13,6 @@
     <string name="title_breed_group">Breed group</string>
     <string name="title_temperament">Temperament</string>
     <string name="notification_empty">No item in your favorite</string>
+    <string name="notification_loved">Loved</string>
+    <string name="notification_unloved">Unloved</string>
 </resources>

@@ -34,6 +34,7 @@ object KoinNames {
     const val EMPTY_BREED_INFO = "name_empty_breed_info"
     const val EMPTY_WEIGHT = "name_empty_weight"
     const val EMPTY_HEIGHT = "name_empty_height"
+    const val EMPTY_IMAGE_DATA = "name_empty_image_data"
 
     const val PROPERTY_CHANGE_REGISTRY = "name_property_change_registry"
 }
