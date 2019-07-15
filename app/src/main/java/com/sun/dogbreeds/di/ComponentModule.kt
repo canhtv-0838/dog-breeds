@@ -6,6 +6,7 @@ import com.sun.dogbreeds.data.api.response.TheDogApiResponse
 import com.sun.dogbreeds.data.db.entity.Breed
 import com.sun.dogbreeds.data.db.entity.BreedInfo
 import com.sun.dogbreeds.data.model.BreedDetail
+import com.sun.dogbreeds.ui.detail.BreedImageAdapter
 import com.sun.dogbreeds.ui.favorite.FavoriteAdapter
 import com.sun.dogbreeds.ui.search.BreedAdapter
 import com.sun.dogbreeds.utils.KoinNames
@@ -16,6 +17,10 @@ val componentModule = module {
 
     single(named(KoinNames.BREED_ADAPTER)) {
         BreedAdapter()
+    }
+
+    single(named(KoinNames.BREED_IMAGE_ADAPTER)) {
+        BreedImageAdapter()
     }
 
     single(named(KoinNames.FAVORITE_ADAPTER)) {

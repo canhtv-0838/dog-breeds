@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bindingViewModel"
+            type="com.sun.dogbreeds.ui.detail.DetailViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:clickable="true"
+        android:elevation="@dimen/dp_16"
+        android:focusable="true"
+        tools:context=".ui.detail.DetailFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_200"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:contentScrim="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:toolbarId="@id/toolbar">
+
+                <ImageView
+                    android:id="@+id/imageAppBar"
+                    imageUrl="@{bindingViewModel.breedInfoData.imageUrl}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_dog_foot"
+                    tools:ignore="ContentDescription" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+                    app:popupTheme="@style/Theme.AppCompat.Light"
+                    app:subtitleTextColor="@color/color_white"
+                    app:title="@{bindingViewModel.breedInfoData.name}"
+                    app:titleTextColor="@color/color_white" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatButtonHeart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="@dimen/dp_175"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:visibility="@{safeUnbox(bindingViewModel.isDisplayingFavoriteButton) ? View.VISIBLE : View.GONE}"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@{safeUnbox(bindingViewModel.isFavoriteBreed) ? @drawable/ic_favorite_black_24dp : @drawable/ic_favorite_border_black_24dp}"
+            android:onClick="@{() -> bindingViewModel.handleFavoriteBreed()}"
+            android:tint="@color/color_white" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_16">
+
+                    <TextView
+                        android:id="@+id/textTitleName"
+                        style="@style/TextBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/title_name"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textTitleWeight"
+                        style="@style/TextBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:text="@string/title_weight"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textTitleName" />
+
+                    <TextView
+                        android:id="@+id/textTitleHeight"
+                        style="@style/TextBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:text="@string/title_height"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textTitleWeight" />
+
+                    <TextView
+                        android:id="@+id/textTitleLifeSpan"
+                        style="@style/TextBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:text="@string/title_life_span"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textTitleHeight" />
+
+                    <TextView
+                        android:id="@+id/textTitleBreedFor"
+                        style="@style/TextBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:text="@string/title_breed_for"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textTitleLifeSpan" />
+
+                    <TextView
+                        android:id="@+id/textTitleBreedGroup"
+                        style="@style/TextBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:text="@string/title_breed_group"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textTitleBreedFor" />
+
+                    <TextView
+                        android:id="@+id/textTitleTemperament"
+                        style="@style/TextBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:text="@string/title_temperament"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textTitleBreedGroup" />
+
+                    <TextView
+                        android:id="@+id/textName"
+                        style="@style/TextDefaultStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{bindingViewModel.detailInfo.name}"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintBottom_toBottomOf="@+id/textTitleName"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textTitleName"
+                        app:layout_constraintTop_toTopOf="@+id/textTitleName" />
+
+                    <TextView
+                        android:id="@+id/textWeight"
+                        style="@style/TextDefaultStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{bindingViewModel.detailInfo.weight}"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintBottom_toBottomOf="@+id/textTitleWeight"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textTitleWeight"
+                        app:layout_constraintTop_toTopOf="@+id/textTitleWeight" />
+
+                    <TextView
+                        android:id="@+id/textHeight"
+                        style="@style/TextDefaultStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{bindingViewModel.detailInfo.height}"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintBottom_toBottomOf="@+id/textTitleHeight"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textTitleHeight"
+                        app:layout_constraintTop_toTopOf="@+id/textTitleHeight" />
+
+                    <TextView
+                        android:id="@+id/textLifeSpan"
+                        style="@style/TextDefaultStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{bindingViewModel.detailInfo.lifeSpan}"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintBottom_toBottomOf="@+id/textTitleLifeSpan"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textTitleLifeSpan"
+                        app:layout_constraintTop_toTopOf="@+id/textTitleLifeSpan" />
+
+                    <TextView
+                        android:id="@+id/textBreedFor"
+                        style="@style/TextDefaultStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{bindingViewModel.detailInfo.breedFor}"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintBottom_toBottomOf="@+id/textTitleBreedFor"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textTitleBreedFor"
+                        app:layout_constraintTop_toTopOf="@+id/textTitleBreedFor" />
+
+                    <TextView
+                        android:id="@+id/textBreedGroup"
+                        style="@style/TextDefaultStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{bindingViewModel.detailInfo.breedGroup}"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintBottom_toBottomOf="@+id/textTitleBreedGroup"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textTitleBreedGroup"
+                        app:layout_constraintTop_toTopOf="@+id/textTitleBreedGroup" />
+
+                    <TextView
+                        android:id="@+id/textTemperament"
+                        style="@style/TextDefaultStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{bindingViewModel.detailInfo.temperament}"
+                        android:textColor="@color/color_black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textTitleTemperament"
+                        app:layout_constraintTop_toTopOf="@+id/textTitleTemperament" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerImages"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                    app:spanCount="@integer/int_2" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

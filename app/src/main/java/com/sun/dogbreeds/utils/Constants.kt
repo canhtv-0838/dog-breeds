@@ -3,7 +3,8 @@ package com.sun.dogbreeds.utils
 object Constants {
 
     // Extra Key for sending parcelable data to fragment
-    const val EXTRA_BREED = "com.sun.breeds.utils.EXTRA_BREED"
+    const val EXTRA_BREED_INFO = "com.sun.breeds.utils.EXTRA_BREED_INFO"
+    const val EXTRA_IMAGE_DATA = "com.sun.breeds.utils.EXTRA_IMAGE_DATA"
 
     //values for creating empty objects
     const val EMPTY_STRING = ""
@@ -12,5 +13,6 @@ object Constants {
     const val UNAVAILABLE_VALUE = -1
     const val TITLE_LOADING = " loading... "
 
-    const val LIMIT_IMAGES = 10
+    // limit of breed's images
+    const val LIMIT_IMAGES = 15
 }
